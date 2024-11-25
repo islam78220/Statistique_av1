@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Acceuil</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #292c30;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        .button-container a:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>Les tendances centrales</h1>
+        <div class="button-container">
+            <!-- Passer le paramètre type dans l'URL -->
+            <a href="{% url 'calcules' %}?type=moyenne">
+                Moyenne
+            </a>
+            <a href="{% url 'calcules' %}?type=mediane">
+                Médiane
+            </a>
+            <a href="{% url 'calcules' %}?type=mode">
+                Mode
+            </a>
+            <a href="{% url 'calcules' %}?type=total">
+                Calcul complet
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+={% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculs des tendances centrales</title>
+</head>
+<body>
+
+    <div align="center">
+        <h1>Calculs des tendances centrales</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="valeurs">Veuillez saisir les valeurs SVP (ex:a,b,c):</label>
+            <br>
+            <input type="text" name="valeurs" value="{{ form.valeurs }}">
+            <br><br>
+            <button type="submit">Calculer</button>
+        </form>
+
+        {% if calcul_type == 'moyenne' and mean is not none %}
+            <p>Moyenne : {{ mean }}</p>
+        {% endif %}
+
+        {% if calcul_type == 'mediane' and median is not none %}
+            <p>Médiane : {{ median }}</p>
+        {% endif %}
+
+        {% if calcul_type == 'mode' and mode is not none %}
+            <p>Mode : {{ mode }}</p>
+        {% endif %}
+
+        {% if calcul_type == 'total' %}
+            {% if mean is not none %}
+                <p>Moyenne : {{ mean }}</p>
+            {% endif %}
+            {% if median is not none %}
+                <p>Médiane : {{ median }}</p>
+            {% endif %}
+            {% if mode is not none %}
+                <p>Mode : {{ mode }}</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</body>
+</html>
